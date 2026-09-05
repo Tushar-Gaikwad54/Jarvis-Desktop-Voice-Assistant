@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>J.A.R.V.I.S. - Neural Agent</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Rajdhani:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Cosmic Background with Light Trails -->
+  <div class="cosmic-bg">
+    <div class="light-streaks"></div>
+    <div class="space-vignette"></div>
+  </div>
+
+  <!-- =========================================================================
+       SCREEN 1: AI CONSTRUCTION BOOT MATRIX (INITIALIZATION)
+       ========================================================================= -->
+  <div id="boot-screen" class="screen-view">
+    <div class="boot-matrix-card">
+      <div class="reactor-container">
+        <div class="reactor-ring-outer"></div>
+        <div class="reactor-ring-mid"></div>
+        <div class="reactor-ring-inner"></div>
+        <div class="reactor-core"></div>
+      </div>
+
+      <h1 class="boot-title">J.A.R.V.I.S. PROTOCOL</h1>
+      <p class="boot-subtitle">CONSTRUCTING NEURAL MATRIX &bull; ENGAGING LOCAL COGNITION</p>
+
+      <div class="boot-progress-wrapper">
+        <div class="boot-progress-info">
+          <span id="boot-status-label">INITIALIZING HARDWARE SYSTEMS...</span>
+          <span id="boot-percent">0%</span>
+        </div>
+        <div class="boot-progress-bar">
+          <div id="boot-progress-fill" class="boot-progress-fill"></div>
+        </div>
+      </div>
+
+      <div id="boot-console" class="boot-console">
+        <div class="boot-log-line cyan">[SYSTEM] Stark Industries AI Kernel Loading...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       SCREEN 2: MAIN LIQUID GLASS INTERACTIVE HUD
+       ========================================================================= -->
+  <div id="main-screen" class="screen-view hidden">
+    <div class="liquid-glass-wrapper">
+      <div class="liquid-glass-container" id="main-glass-frame">
+        
+        <!-- =====================================================================
+             TOP TELEMETRY HEADER (NO CAMERA ISLAND)
+             ===================================================================== -->
+        <header class="glass-header">
+          <!-- Left: Brand Badge & Online Status -->
+          <div class="header-left">
+            <div class="brand-avatar-badge">
+              <svg class="waveform-svg" viewBox="0 0 40 40">
+                <circle cx="20" cy="20" r="18" fill="none" stroke="rgba(0, 229, 255, 0.3)" stroke-width="1.5"/>
+                <path class="pulse-path" d="M 6 20 Q 11 12, 14 20 T 20 8 T 26 30 T 30 15 T 34 20" fill="none" stroke="#00f2fe" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="brand-titles">
+              <div class="brand-name" id="hud-brand-title">J.A.R.V.I.S.</div>
+              <div class="brand-sub" id="hud-brand-sub">NEURAL AGENT</div>
+            </div>
+            <div class="core-status-pill">
+              <span class="status-indicator-dot" id="system-status-dot"></span>
+              <span class="status-indicator-text" id="core-status-text">Core: Online</span>
+            </div>
+          </div>
+
+          <!-- Center: Futuristic Neural Status Capsule (No camera notch/island) -->
+          <div class="header-center">
+            <div class="hud-status-capsule" id="hud-status-capsule">
+              <span class="status-glow-dot"></span>
+              <span class="hud-capsule-text" id="hud-status-text">NEURAL CORE // ACTIVE</span>
+            </div>
+          </div>
+
+          <!-- Right: Model, Persona & Time Telemetry -->
+          <div class="header-right">
+            <div class="telemetry-block">
+              <span class="telemetry-title">Model</span>
+              <span class="telemetry-val model-val" id="telemetry-model">llama3.2</span>
+            </div>
+            <div class="telemetry-divider"></div>
+            <div class="telemetry-block" id="persona-telemetry-block" onclick="handleToggleVoiceGender()" style="cursor: pointer;" title="Click to toggle Voice Persona (J.A.R.V.I.S. / F.R.I.D.A.Y.)">
+              <span class="telemetry-title">Persona</span>
+              <span class="telemetry-val persona-val" id="telemetry-persona">MALE</span>
+            </div>
+            <div class="telemetry-divider"></div>
+            <div class="telemetry-block time-block">
+              <span class="telemetry-title">Time</span>
+              <span class="telemetry-val time-val" id="clock-display">00:00:00</span>
+            </div>
+            <div class="telemetry-divider"></div>
+            <button class="header-icon-btn" id="fullscreen-btn" onclick="handleToggleFullscreen()" title="Toggle Fullscreen (F11)">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+              </svg>
+            </button>
+          </div>
+        </header>
+
+        <!-- =====================================================================
+             MAIN 3-COLUMN INTERACTIVE BODY
+             ===================================================================== -->
+        <main class="glass-body">
+          
+          <!-- Left Column: System Diagnostics Card (Real Hardware & Live Resource Meters) -->
+          <aside class="left-diagnostics-card">
+            <div class="diag-header">
+              <div class="diag-header-left">
+                <span class="live-pulse-dot"></span>
+                <span class="diag-header-title">// LIVE TELEMETRY</span>
+              </div>
+              <span class="diag-header-badge" id="tool-count-badge">14 TOOLS</span>
+            </div>
+
+            <!-- OS Row -->
+            <div class="diag-item os-item">
+              <span class="diag-icon">
+                <!-- Windows OS Icon -->
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-13.051-1.801"/>
+                </svg>
+              </span>
+              <div class="diag-content">
+                <div class="diag-row-main">
+                  <span class="diag-label">OS</span>
+                  <span class="diag-value" id="diag-os">Windows 11</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- CPU Live Meter -->
+            <div class="diag-item meter-item">
+              <span class="diag-icon">
+                <!-- CPU Icon -->
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="4" y="4" width="16" height="16" rx="2"/>
+                  <rect x="9" y="9" width="6" height="6"/>
+                  <line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/>
+                  <line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/>
+                  <line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="15" x2="23" y2="15"/>
+                  <line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="15" x2="4" y2="15"/>
+                </svg>
+              </span>
+              <div class="diag-content">
+                <div class="diag-row-main">
+                  <span class="diag-label">CPU (<span id="diag-cpu-cores">12</span> Cores)</span>
+                  <span class="diag-value highlight-cyan" id="diag-cpu-val">0%</span>
+                </div>
+                <div class="diag-bar-track">
+                  <div class="diag-bar-fill" id="diag-cpu-bar" style="width: 0%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- RAM Live Meter -->
+            <div class="diag-item meter-item">
+              <span class="diag-icon">
+                <!-- RAM Icon -->
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="6" width="20" height="12" rx="2"/>
+                  <line x1="6" y1="12" x2="6" y2="12"/><line x1="10" y1="12" x2="10" y2="12"/>
+                  <line x1="14" y1="12" x2="14" y2="12"/><line x1="18" y1="12" x2="18" y2="12"/>
+                </svg>
+              </span>
+              <div class="diag-content">
+                <div class="diag-row-main">
+                  <span class="diag-label">RAM (<span id="diag-ram-total">16 GB</span>)</span>
+                  <span class="diag-value highlight-cyan" id="diag-ram-used">-- GB</span>
+                </div>
+                <div class="diag-sub-row">
+                  <span class="diag-sub-text" id="diag-ram-sub">Avail: -- GB (0%)</span>
+                </div>
+                <div class="diag-bar-track">
+                  <div class="diag-bar-fill" id="diag-ram-bar" style="width: 0%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- GPU Live Meter -->
+            <div class="diag-item meter-item">
+              <span class="diag-icon">
+                <!-- GPU Icon -->
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="4" width="20" height="16" rx="3"/>
+                  <circle cx="8" cy="12" r="2.5"/>
+                  <circle cx="16" cy="12" r="2.5"/>
+                  <line x1="10.5" y1="12" x2="13.5" y2="12"/>
+                </svg>
+              </span>
+              <div class="diag-content">
+                <div class="diag-row-main">
+                  <span class="diag-label" id="diag-gpu-label">GPU</span>
+                  <span class="diag-value highlight-cyan" id="diag-gpu-val">0%</span>
+                </div>
+                <div class="diag-sub-row">
+                  <span class="diag-sub-text" id="diag-gpu-sub">VRAM: -- / -- GB</span>
+                </div>
+                <div class="diag-bar-track">
+                  <div class="diag-bar-fill" id="diag-gpu-bar" style="width: 0%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Storage / Disk Live Meter -->
+            <div class="diag-item meter-item">
+              <span class="diag-icon">
+                <!-- Storage Icon -->
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="4" width="18" height="16" rx="2"/>
+                  <line x1="3" y1="14" x2="21" y2="14"/>
+                  <circle cx="17" cy="9" r="1.5"/>
+                </svg>
+              </span>
+              <div class="diag-content">
+                <div class="diag-row-main">
+                  <span class="diag-label">Disk Storage</span>
+                  <span class="diag-value" id="diag-disk-free">-- GB Free</span>
+                </div>
+                <div class="diag-sub-row">
+                  <span class="diag-sub-text" id="diag-disk-sub">Total: -- GB (0% used)</span>
+                </div>
+                <div class="diag-bar-track">
+                  <div class="diag-bar-fill" id="diag-disk-bar" style="width: 0%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Working Directory & Path -->
+            <div class="diag-item path-item">
+              <span class="diag-icon">
+                <!-- Home / Path Icon -->
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                  <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+              </span>
+              <div class="path-details">
+                <span class="path-title">Path:</span>
+                <span class="path-val" id="diag-path" title="Working Workspace">C:/.../Jarvis-Desktop-Voice-Assistant</span>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Center Column: Neural Particle Vortex Core -->
+          <section class="center-vortex-card">
+            <div class="vortex-canvas-wrapper">
+              <canvas id="vortex-canvas"></canvas>
+            </div>
+            <div class="vortex-status-badge" id="vortex-status-badge">
+              READY FOR VOICE OR TEXT COMMANDS
+            </div>
+          </section>
+
+          <!-- Right Column: Liquid Glass Chat Panel -->
+          <section class="right-chat-panel">
+            <!-- Scrollable Real Chat Stream -->
+            <div class="chat-messages-stream" id="chat-messages">
+              <!-- Initial Welcome Greeting -->
+              <div class="chat-bubble assistant">
+                <div class="bubble-sender" id="initial-agent-label">J.A.R.V.I.S.</div>
+                <div class="bubble-text" id="initial-welcome-text">
+                  Good day, Sir. All diagnostic systems are online and the local Ollama neural engine is operational. How may I be of service to you today?
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Suggestion Chips -->
+            <div class="quick-suggestion-bar">
+              <button class="suggestion-chip" onclick="sendSuggestion('What can you do?')">⚡ What can you do?</button>
+              <button class="suggestion-chip" onclick="sendSuggestion('What is the current time and date?')">🕒 Current Time</button>
+              <button class="suggestion-chip" onclick="sendSuggestion('Open Notepad')">📝 Notepad</button>
+              <button class="suggestion-chip" onclick="sendSuggestion('Tell me a programming joke')">😄 Tell a Joke</button>
+              <button class="suggestion-chip" onclick="sendSuggestion('Run system diagnostics')">🩺 Diagnostics</button>
+            </div>
+
+            <!-- Bottom Speech Input Capsule with Animated Waveform & Mic Button -->
+            <div class="speech-input-capsule">
+              <input 
+                type="text" 
+                id="chat-input" 
+                class="capsule-text-input" 
+                placeholder="Speak into microphone or enter a command..." 
+                autocomplete="off"
+              />
+              
+              <!-- Cyan Audio Waveform Visualizer -->
+              <div class="capsule-waveform-container" id="capsule-waveform-box">
+                <canvas id="waveform-canvas" width="130" height="28"></canvas>
+              </div>
+
+              <!-- Glowing Mic Trigger Button -->
+              <button id="voice-mic-btn" class="capsule-mic-btn" title="Click to speak (Microphone)" onclick="toggleVoiceListening()">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                  <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+                  <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+                </svg>
+              </button>
+            </div>
+          </section>
+
+        </main>
+
+        <!-- =====================================================================
+             BOTTOM CONTROL BAR: ACTIONS & LIQUID GLASS CONTROLS
+             ===================================================================== -->
+        <footer class="glass-footer">
+          
+          <!-- Left Action Pills -->
+          <div class="footer-actions-left">
+            <button class="liquid-pill-btn" onclick="sendSuggestion('What is the current time and date?')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <span>Current Time</span>
+            </button>
+
+            <button class="liquid-pill-btn" onclick="handleOpenTextEditor()">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+              </svg>
+              <span>Text Editor</span>
+            </button>
+
+            <button class="liquid-pill-btn" onclick="sendSuggestion('Run system diagnostics')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/>
+                <line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
+              </svg>
+              <span>Process content</span>
+            </button>
+          </div>
+
+          <!-- Right Control Group: Interrupt, Transmit, Persona, Voice Power -->
+          <div class="footer-controls-right">
+            
+            <!-- Instant Interrupt Action Button (Pulsing Red when talking) -->
+            <button id="interrupt-btn" class="control-pill-btn interrupt-btn" title="Stop speech output immediately (Hotkey: Esc)" onclick="handleInterruptSpeech()">
+              <span class="interrupt-square">⏹</span>
+              <span>Interrupt</span>
+            </button>
+
+            <!-- Transmit Action Button -->
+            <button id="transmit-btn" class="control-pill-btn transmit-btn" title="Transmit command (Enter)" onclick="handleSendText()">
+              <span>Transmit</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+              </svg>
+            </button>
+
+            <!-- Voice Persona Switch (Male J.A.R.V.I.S. / Female F.R.I.D.A.Y.) -->
+            <button id="persona-btn" class="control-pill-btn persona-btn" title="Switch Male (J.A.R.V.I.S.) / Female (F.R.I.D.A.Y.)" onclick="handleToggleVoiceGender()">
+              <span id="persona-btn-icon">♂</span>
+              <span id="persona-btn-label">Voice Male</span>
+            </button>
+
+            <!-- Voice Synthesis Audio Toggle (Mute / Unmute) -->
+            <button id="voice-power-btn" class="control-pill-btn voice-power-btn active" title="Mute / Unmute Voice Synthesis" onclick="toggleAudioMute()">
+              <span id="voice-power-icon">🔊</span>
+              <span id="voice-power-label">Voice On</span>
+            </button>
+
+          </div>
+
+        </footer>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="hud_core.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

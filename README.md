@@ -1,127 +1,128 @@
-# Jarvis Desktop Voice Assistant🔥
+# J.A.R.V.I.S. — Personal AI, Computer Agent & Coding Assistant
 
-<img src="https://giffiles.alphacoders.com/212/212508.gif" alt="">
-
-**Have you ever wondered how cool it would be to have your own assistant? Imagine how easier it would be doing Wikipedia searches without opening web browsers, and performing many other daily tasks like playing music with the help of a single voice command, opening different browsers in just a voice command.**
-
-**This project is simple desktop voice assistant built with python named as “Jarvis Desktop Voice Assistant”. This project is fully completed and error free. It was compiled in VS Code Editor.**
-
-**🔸 Let's be honest, it's not as intelligent as in the movie, but it can do a lot of cool things and automate your daily tasks you do on your personal computers/laptops.**
-
-## 📌Built with
-
-<code><img height="30" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/python/python.png"></code>
-
-## 📌Features
-
-It can do a lot of cool things, some of them being:
-
-- Greet user
-- Tell current time and date
-- Launch applications/softwares
-- Open any website
-- Tells about any person (via Wikipedia)
-- Can search anything on Google
-- Plays music
-- Take important note in text file
-- Can take screenshot and save it with custom filename
-- Can tell jokes
-
-## Requirements
-
-Python 3.6+
-
-## 📌Installation
-
-1. **Fork The Repository**
-   - Click the "Fork" button on the top right corner of the repository page.
-
-2. **Clone The Repository**
-   - Clone the forked repository to your local machine:
-     ```bash
-     git clone <URL>
-     cd Jarvis-Desktop-Voice-Assistant
-     ```
-
-3.  **Create and Activate a Virtual Environment**
-     - Create a virtual environment:
-     ```bash
-     python -m venv .venv
-     ```
-   - Activate the virtual environment:
-     - For Windows:
-       ```bash
-       .venv\Scripts\activate
-       ```
-     - For macOS/Linux:
-       ```bash
-       source .venv/bin/activate
-       ```
-   - This activates the virtual environment and should look like `(venv) directory/of/your/project>`
-
-4. **Install Requirements**
-
-   - Install all the requirements given in **[requirements.txt](https://github.com/kishanrajput23/Jarvis-Desktop-Voice-Assistant/blob/main/requirements.txt)** by running the command `pip install -r requirements.txt`
-
-5. **Install PyAudio**  
-   - Follow the instructions given **[here](https://stackoverflow.com/questions/52283840/i-cant-install-pyaudio-on-windows-how-to-solve-error-microsoft-visual-c-14)**
-
-6. **Run the Assistant**
-  - Run the main script:
-    ```bash
-    python jarvis.py
-    ```
-  - Now Enjoy with your own assistant !!!!
-
-7. **Deactivate the Virtual Environment**
-   - After you're done, deactivate the virtual environment:
-     ```bash
-     deactivate
-     ```
-
-## 📌Contributing
-
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-## 📌Author
-
-👤 **Kishan Kumar Rai**
-
-- Twitter: [@kishan_rajput23](https://twitter.com/kishan_rajput23)
-- Github: [@kishanrajput23](https://github.com/kishanrajput23)
-- LinkedIn: [@kishan-kumar-rai](https://linkedin.com/in/kishan-kumar-rai-23112000)
-
-## 📌Show your support
-
-Please ⭐️ this repository if this project helped you!
-
-## 📌License
-
-This project is [MIT](https://choosealicense.com/licenses/mit/) licensed.
-
-## 📌Learning Resources to Extend This Project
-
-To build this project further and enhance its capabilities, a strong understanding of the following areas is recommended:
-
-### 🐍 Python Fundamentals
-Python is the core language behind this project. A solid grasp of syntax, control flow, functions, and error handling will help you modify and extend the assistant’s functionality.  
-👉 [Python Programming Course](https://www.mygreatlearning.com/academy/premium/master-python-programming)
-
-### 🎙️ Voice Processing & NLP
-Voice commands are processed using speech and text-based techniques. Understanding Natural Language Processing (NLP) concepts such as tokenization and text analysis can help improve voice interaction.  
-👉 [Introduction to NLP](https://www.mygreatlearning.com/academy/learn-for-free/courses/introduction-to-natural-language-processing)
-
-### 🤖 Intelligence & Generative AI
-Currently, the assistant follows predefined logic. By integrating Generative AI concepts, it can be enhanced into a conversational assistant capable of generating intelligent responses and performing web-based tasks.  
-👉 [Introduction to Generative AI](https://www.mygreatlearning.com/academy/premium/master-generative-ai)
-
-### 👁️ Computer Vision
-To make the assistant more advanced, computer vision can be introduced for features like face detection and gesture control. Learning image and video processing fundamentals is a good starting point.  
-👉 [Computer Vision Essentials](https://www.mygreatlearning.com/academy/learn-for-free/courses/computer-vision-essentials)
-
-### 📄 Related Reading
-For a conceptual overview of building voice assistants in Python, you can refer to this article: [CLICK HERE](https://www.mygreatlearning.com/blog/jarvis-desktop-assistant-python-project/)
+> **Just A Rather Very Intelligent System**  
+> An offline-first, extensible, and free personal AI and computer agent.
 
 ---
 
-> *Some learning resources mentioned above are shared as part of an educational collaboration.*
+## 🌟 Overview & Philosophy
+
+J.A.R.V.I.S. is being evolved from a simple script into a fully autonomous, offline-first personal AI computer and coding agent.
+
+* **Offline-First & Free**: No mandatory subscriptions or paid cloud APIs.
+* **Pluggable Local LLMs**: Direct support for [Ollama](https://ollama.com) (Llama 3, Qwen 2.5 Coder, Mistral, Phi-3, DeepSeek), [LM Studio](https://lmstudio.ai), and a built-in zero-dependency deterministic fallback engine.
+* **Extensible Tool System**: Safe PowerShell command runner, workspace filesystem manager, system specs inspector, and diagnostic debugger.
+* **3-Tier Permission Boundary**: Classifies all actions (`LOW`, `MEDIUM`, `HIGH`, `CRITICAL`) with confirmation prompts for destructive operations.
+* **System Diagnostics**: Automatically investigates and diagnoses missing CLI tools (e.g. `winget`, `python`, `git`) and PATH misconfigurations.
+
+---
+
+## 🚀 Quick Start
+
+### 1. Launch J.A.R.V.I.S. (Interactive CLI)
+```bash
+python main.py
+```
+
+### 2. Run Diagnostics / Health Check
+```bash
+python main.py --doctor
+```
+
+### 3. Run a Single Non-Interactive Query
+```bash
+python main.py --query "What are my system specs?"
+python main.py --query "diagnose winget"
+python main.py --query "list files in workspace"
+```
+
+---
+
+## 🧠 Connecting Local LLMs
+
+You can switch the cognitive provider in `config.json` or pass `--provider`:
+
+### Option A: Local Ollama (Recommended)
+1. Install Ollama from [ollama.com](https://ollama.com)
+2. Pull a model:
+   ```bash
+   ollama pull llama3.2
+   # or for coding:
+   ollama pull qwen2.5-coder:7b
+   ```
+3. Update `config.json`:
+   ```json
+   {
+     "llm": {
+       "provider": "ollama",
+       "model": "llama3.2"
+     }
+   }
+   ```
+
+### Option B: LM Studio / LocalAI (OpenAI-Compatible)
+1. Launch LM Studio and start the local inference server (default port `1234`).
+2. Update `config.json`:
+   ```json
+   {
+     "llm": {
+       "provider": "openai_compatible",
+       "openai_compat_url": "http://localhost:1234/v1"
+     }
+   }
+   ```
+
+### Option C: Standalone Rule Engine (Zero Setup)
+Default out of the box. No model download needed.
+
+---
+
+## 🛠️ Built-in Tools
+
+| Tool | Risk Level | Description |
+| :--- | :--- | :--- |
+| `run_shell_command` | `HIGH` (Dynamic) | Executes PowerShell commands with output capture and timeout handling. |
+| `get_system_info` | `LOW` | Inspects CPU, RAM, OS, disk space, and runtime metrics. |
+| `diagnose_command` | `LOW` | Diagnoses missing tools, PATH issues, and Windows AppExecutionAliases (`winget`, etc.). |
+| `read_file` | `LOW` | Reads text files safely with line truncation limits. |
+| `write_file` | `MEDIUM` | Creates or writes files within the workspace. |
+| `list_directory` | `LOW` | Lists directory trees and file metadata. |
+| `take_screenshot` | `LOW` | Captures and saves desktop screenshots to `~/Pictures`. |
+| `open_browser` | `LOW` | Opens URLs and web apps in the default browser. |
+| `tell_joke` | `LOW` | Returns tech and programming jokes. |
+
+---
+
+## ⌨️ CLI Meta Commands
+
+When running in interactive mode (`python main.py`), you can use the following commands:
+* `:help` — Show interaction guide and query examples.
+* `:doctor` — Run full system diagnostic health checks.
+* `:tools` — List all registered tools and their schemas.
+* `:status` — Check active LLM engine, memory context, and runtime state.
+* `:voice` — Toggle offline voice speech output (pyttsx3).
+* `:config` — Display active configuration settings.
+* `:clear` — Clear terminal screen and reset conversation history.
+* `:exit` — Exit J.A.R.V.I.S.
+
+---
+
+## 🧪 Running Unit Tests
+
+```bash
+python -m unittest discover -s tests
+```
+
+---
+
+## 🗺️ 9-Phase Roadmap
+
+1. ✅ **Phase 1 — Foundation (Baby J.A.R.V.I.S.)**: Core engine, modular package, tool registry, safety gates, local LLM layer, and interactive CLI.
+2. ⬜ **Phase 2 — Voice**: Local offline STT (Whisper/Vosk), wake-word detection, continuous listening.
+3. ⬜ **Phase 3 — Memory**: Vector store (Chromadb/sqlite-vss), long-term user preferences, project memory.
+4. ⬜ **Phase 4 — Computer Control**: UI automation, window management, desktop perception.
+5. ⬜ **Phase 5 — Coding Agent**: Multi-file refactoring, autonomous debugging, test-driven repair loop.
+6. ⬜ **Phase 6 — System Agent**: Windows service management, registry fixes, environment doctor.
+7. ⬜ **Phase 7 — Agentic Intelligence**: Goal-oriented planning, multi-step subtask decomposition.
+8. ⬜ **Phase 8 — Safety & Reliability**: Sandbox execution, rollback strategies, dry-run previews.
+9. ⬜ **Phase 9 — Mature J.A.R.V.I.S.**: Fully autonomous, multimodal personal AI assistant.

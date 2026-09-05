@@ -1,0 +1,32 @@
+{
+  "name": "J.A.R.V.I.S.",
+  "user_name": "Sir",
+  "workspace_dir": ".",
+  "llm": {
+    "provider": "ollama",
+    "model": "llama3.2",
+    "ollama_url": "http://localhost:11434",
+    "openai_compat_url": "http://localhost:1234/v1",
+    "openai_compat_api_key": "not-needed",
+    "temperature": 0.7,
+    "max_tokens": 2048,
+    "timeout_seconds": 60
+  },
+  "security": {
+    "require_confirmation_for_high_risk": true,
+    "auto_approve_low_risk": true,
+    "auto_approve_medium_risk": false,
+    "allowed_workspace_only": false,
+    "command_timeout_seconds": 30
+  },
+  "voice": {
+    "enabled": true,
+    "tts_engine": "pyttsx3",
+    "tts_rate": 175,
+    "tts_volume": 1.0,
+    "voice_index": 1,
+    "voice_gender": "female",
+    "input_mode": "voice"
+  },
+  "log_level": "INFO"
+}
